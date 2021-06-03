@@ -8,7 +8,7 @@ import 'package:js/js.dart';
 class Howl {
   final HowlJs howl;
 
-  Howl({List<String> src, bool autoPlay = false})
+  Howl({List<String?>? src, bool autoPlay = false})
       : howl = HowlJs(HowlParams(
           src: src,
           autoplay: autoPlay,
@@ -26,7 +26,7 @@ class Howl {
 
   bool get playing => howl.playing;
 
-  double volume([double volume]) => howl.volume(volume);
+  double volume([double? volume]) => howl.volume(volume);
 
   double get duration => howl.duration;
 
@@ -70,7 +70,7 @@ class HowlJs {
 
   external bool get playing;
 
-  external double volume([double volume]);
+  external double volume([double? volume]);
 
   external double get duration;
 
@@ -80,5 +80,5 @@ class HowlJs {
 @JS()
 @anonymous
 class HowlParams {
-  external factory HowlParams({List<String> src, bool autoplay = false});
+  external factory HowlParams({List<String?>? src, bool autoplay = false});
 }

@@ -3,7 +3,7 @@ import 'dart:html' as html;
 
 class ImportJsLibraryWeb {
   /// Injects the library by its [url]
-  static Future<void> import(String url) {
+  static Future<void> import(String? url) {
     return _importJSLibraries([url]);
   }
 
@@ -19,14 +19,14 @@ class ImportJsLibraryWeb {
 
   /// Injects a bunch of libraries in the <head> and returns a
   /// Future that resolves when all load.
-  static Future<void> _importJSLibraries(List<String> libraries) {
+  static Future<void> _importJSLibraries(List<String?> libraries) {
     final List<Future<void>> loading = <Future<void>>[];
     final head = html.querySelector('head');
 
-    libraries.forEach((String library) {
-      if (!isImported(library)) {
+    libraries.forEach((String? library) {
+      if (!isImported(library!)) {
         final scriptTag = _createScriptTag(library);
-        head.children.add(scriptTag);
+        head!.children.add(scriptTag);
         loading.add(scriptTag.onLoad.first);
       }
     });
@@ -49,7 +49,7 @@ class ImportJsLibraryWeb {
   }
 
   static bool isImported(String url) {
-    final head = html.querySelector('head');
+    final head = html.querySelector('head')!;
     return _isLoaded(head, url);
   }
 }

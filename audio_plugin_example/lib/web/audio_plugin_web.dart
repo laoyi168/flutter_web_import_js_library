@@ -23,23 +23,23 @@ class AudioPlugin {
     channel.setMethodCallHandler(instance.handleMethodCall);
   }
 
-  Howl audio;
+  Howl? audio;
 
   Future<dynamic> handleMethodCall(MethodCall call) async {
     print(call.method);
     switch (call.method) {
       case "play":
         if(audio != null){
-          audio.play();
+          audio!.play();
         }
         break;
       case "pause":
         if(audio != null){
-          audio.pause();
+          audio!.pause();
         }
         break;
       case "open":
-        final String path = call.arguments["path"];
+        final String? path = call.arguments["path"];
         audio = Howl(src: [path]);
         break;
     }
