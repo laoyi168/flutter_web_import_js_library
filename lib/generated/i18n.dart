@@ -54,7 +54,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S?> {
 
   @override
   Future<S?> load(Locale locale) {
-    final String lang = getLang(locale);
+    final String? lang = getLang(locale);
     if (lang != null) {
       switch (lang) {
         case "en":
@@ -119,7 +119,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S?> {
   }
 }
 
-String getLang(Locale l) => l == null
+String? getLang(Locale l) => l == null
   ? null
   : l.countryCode != null && l.countryCode!.isEmpty
     ? l.languageCode
