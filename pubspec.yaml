@@ -14,7 +14,7 @@ dependencies:
   html: ^0.15.1
   flutter_web_plugins:
     sdk: flutter
-  js: ^0.6.4
+  js: ^0.6.5
 
 dev_dependencies:
   flutter_test:
